@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Белград → Рио-де-Жанейро · Air France</title>
+<meta name="description" content="Рейс Белград — Рио-де-Жанейро, Air France / airBaltic, 1 ноября 2026, 2 пассажира: расписание, пересадка в Париже, тарифы и ссылка на официальное бронирование.">
+<style>
+  :root{
+    --bg:#f4f4f5;
+    --surface:#ffffff;
+    --surface-2:#fafafa;
+    --text:#1a1a1c;
+    --text-soft:#57575c;
+    --text-faint:#8a8a90;
+    --border:#e5e5e7;
+    --border-strong:#d6d6d9;
+    --accent:#c8102e;
+    --accent-soft:#fdeef0;
+    --good:#15803d;
+    --good-bg:#e9f6ee;
+    --warn:#b45309;
+    --warn-bg:#fbf1e3;
+    --bad:#b91c1c;
+    --bad-bg:#fbeaea;
+    --shadow:0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+    --shadow-lg:0 2px 8px rgba(0,0,0,.06), 0 20px 48px rgba(0,0,0,.10);
+    --radius:18px;
+    --radius-sm:12px;
+    --maxw:1080px;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0d0d0f; --surface:#161618; --surface-2:#1c1c1f;
+      --text:#f2f2f3; --text-soft:#b6b6bb; --text-faint:#7d7d84;
+      --border:#2a2a2e; --border-strong:#3a3a40;
+      --accent:#ff6b7f; --accent-soft:#2a151a;
+      --good:#5ed08a; --good-bg:#14251b;
+      --warn:#e0a95e; --warn-bg:#2a2213;
+      --bad:#f08a8a; --bad-bg:#2a1717;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
+      --shadow-lg:0 4px 14px rgba(0,0,0,.35), 0 24px 56px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0d0d0f; --surface:#161618; --surface-2:#1c1c1f;
+    --text:#f2f2f3; --text-soft:#b6b6bb; --text-faint:#7d7d84;
+    --border:#2a2a2e; --border-strong:#3a3a40;
+    --accent:#ff6b7f; --accent-soft:#2a151a;
+    --good:#5ed08a; --good-bg:#14251b;
+    --warn:#e0a95e; --warn-bg:#2a2213;
+    --bad:#f08a8a; --bad-bg:#2a1717;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
+    --shadow-lg:0 4px 14px rgba(0,0,0,.35), 0 24px 56px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:var(--accent);text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
+
+  .theme-toggle{
+    position:fixed;top:14px;right:14px;z-index:50;
+    background:var(--surface);border:1px solid var(--border);color:var(--text-soft);
+    width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:16px;
+    display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    border-radius: 0 0 32px 32px;
+    overflow:hidden;
+    background: linear-gradient(160deg, #0a0f2e 0%, #1a1450 45%, #2c1f6e 100%);
+    color:#fff;
+    padding: 64px 0 40px;
+    margin-bottom: 40px;
+  }
+  .hero-photo{
+    position:absolute; inset:0;
+    background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/57/Air_France%2C_F-HTYG%2C_Airbus_A350-941_%2851272694334%29.jpg');
+    background-size:cover; background-position:center 55%;
+    opacity:.30;
+  }
+  .hero-scrim{
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(10,10,40,.5) 0%, rgba(10,10,40,.75) 55%, rgba(10,10,40,.96) 100%);
+  }
+  .hero-inner{ position:relative; z-index:1; }
+  .airline-row{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+  .airline-row .logo-pill{
+    display:flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,.94); padding:7px 14px; border-radius:999px;
+  }
+  .airline-row .logo-pill img{ height:16px; width:auto; }
+  .airline-row .plus{ color:rgba(255,255,255,.6); font-weight:700; }
+  .hero h1{
+    font-size:clamp(28px,5vw,46px); font-weight:800; letter-spacing:-.02em; margin:0 0 14px; line-height:1.08;
+  }
+  .hero .route-badge{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:clamp(17px,3vw,23px); font-weight:700;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    padding:10px 20px; border-radius:999px;
+    backdrop-filter: blur(6px);
+    margin-bottom:16px;
+  }
+  .hero .route-badge .plane{ font-size:15px; opacity:.85; }
+  .hero .sub{ font-size:16px; color:rgba(255,255,255,.78); font-weight:500; max-width:580px; }
+  .hero .crit{ display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 0; padding:0; list-style:none; }
+  .hero .crit li{
+    font-size:13px; color:rgba(255,255,255,.9);
+    background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.2);
+    padding:6px 12px; border-radius:999px;
+  }
+
+  .section-title{
+    font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);
+    font-weight:700;margin:44px 0 16px;
+  }
+
+  /* ---------- date strip ---------- */
+  .date-strip{ display:flex; gap:10px; overflow-x:auto; padding:2px 2px 10px; }
+  .date-card{
+    flex:0 0 auto; min-width:104px; text-align:center;
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm);
+    padding:13px 14px; box-shadow:var(--shadow);
+  }
+  .date-card.selected{ border-color:var(--accent); background:var(--accent-soft); }
+  .date-card .d{ font-size:12.5px; color:var(--text-soft); font-weight:600; margin-bottom:6px; }
+  .date-card.selected .d{ color:var(--accent); }
+  .date-card .p{ font-size:15px; font-weight:700; }
+  .date-card .pp{ font-size:10.5px; color:var(--text-faint); margin-top:1px; }
+
+  /* ---------- flight timeline card ---------- */
+  .flight-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    box-shadow:var(--shadow); overflow:hidden; margin-bottom:16px;
+  }
+  .flight-photo-strip{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border);
+  }
+  .flight-photo-strip figure{ margin:0; position:relative; aspect-ratio:16/9; overflow:hidden; background:var(--surface-2); }
+  .flight-photo-strip img{ width:100%; height:100%; object-fit:cover; }
+  .flight-photo-strip figcaption{
+    position:absolute; left:10px; bottom:10px;
+    background:rgba(15,20,30,.6); color:#fff; font-size:11.5px; font-weight:600;
+    padding:4px 10px; border-radius:999px; backdrop-filter:blur(4px);
+  }
+
+  .timeline{ padding:26px 24px 22px; }
+  .leg-row{ display:grid; grid-template-columns: 70px 1fr; gap:16px; }
+  .leg-row .rail{ display:flex; flex-direction:column; align-items:center; }
+  .leg-row .rail .dot{
+    width:12px; height:12px; border-radius:50%; background:var(--accent);
+    box-shadow:0 0 0 4px var(--accent-soft);
+  }
+  .leg-row .rail .dot.end{ background:var(--good); box-shadow:0 0 0 4px var(--good-bg); }
+  .leg-row .rail .stem{ flex:1; width:2px; background:var(--border-strong); margin:6px 0; min-height:36px; }
+  .leg-row .content{ padding-bottom:4px; }
+  .leg-row .time{ font-size:22px; font-weight:800; letter-spacing:-.01em; }
+  .leg-row .place{ font-size:15px; font-weight:600; margin-top:2px; }
+  .leg-row .meta{ font-size:12.5px; color:var(--text-faint); margin-top:2px; }
+
+  .segment-info{ margin: 4px 0 22px 86px; display:flex; flex-wrap:wrap; gap:8px; }
+  .segment-info .pill{
+    font-size:12px; font-weight:600; color:var(--text-soft);
+    background:var(--surface-2); border:1px solid var(--border);
+    padding:5px 11px; border-radius:999px;
+  }
+
+  .layover-row{
+    margin: 4px 0 22px 86px;
+    display:flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600; color:var(--warn);
+    background:var(--warn-bg); border-radius:var(--radius-sm);
+    padding:10px 14px;
+  }
+
+  .flight-summary{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px;
+    padding:20px 24px; border-top:1px solid var(--border); background:var(--surface-2);
+  }
+  .flight-summary .item .k{ font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-faint); font-weight:700; }
+  .flight-summary .item .v{ font-size:16px; font-weight:700; margin-top:3px; }
+
+  /* ---------- passengers note ---------- */
+  .pax-note{
+    display:flex; align-items:center; gap:10px;
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm);
+    padding:12px 16px; font-size:13.5px; color:var(--text-soft); margin-bottom:8px; box-shadow:var(--shadow);
+  }
+  .pax-note b{ color:var(--text); }
+
+  /* ---------- fares ---------- */
+  .fares{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin:18px 0 12px; }
+  .fare-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:24px 22px; box-shadow:var(--shadow); display:flex; flex-direction:column; position:relative;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .fare-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+  .fare-card.highlight{ border-color:var(--accent); box-shadow:var(--shadow-lg); }
+  .fare-card .badge{
+    position:absolute; top:-12px; left:22px; background:var(--accent); color:#fff;
+    font-size:11.5px; font-weight:700; padding:5px 12px; border-radius:999px;
+  }
+  .fare-name{ font-size:19px; font-weight:700; margin-bottom:6px; }
+  .fare-cabin{ font-size:12px; color:var(--text-faint); font-weight:600; text-transform:uppercase; letter-spacing:.04em; margin-bottom:14px; }
+  .fare-price{ font-size:30px; font-weight:800; letter-spacing:-.02em; }
+  .fare-per{ font-size:12.5px; color:var(--text-faint); margin-bottom:20px; }
+  .fare-per b{ color:var(--text-soft); }
+  .fare-cta{
+    display:block; text-align:center; background:var(--accent); color:#fff; font-weight:700;
+    font-size:15px; padding:13px 0; border-radius:999px; margin-bottom:20px;
+    transition: opacity .15s ease, transform .15s ease;
+  }
+  .fare-cta:hover{ opacity:.9; }
+  .fare-cta:active{ transform:scale(.98); }
+  .fare-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
+  .fare-list li{ display:flex; gap:9px; font-size:13.5px; line-height:1.4; }
+  .fare-list li.no{ color:var(--text-faint); }
+  .fare-list .icon{ flex:0 0 auto; width:18px; text-align:center; }
+  .fare-list .icon.ok{ color:var(--good); }
+  .fare-list .icon.no{ color:var(--text-faint); }
+  .fare-list .fine{ display:block; font-size:11.5px; color:var(--text-faint); margin-top:1px; }
+
+  /* ---------- premium cabins ---------- */
+  .premium-row{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin: 6px 0 8px;
+  }
+  .premium-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm);
+    padding:18px 20px; box-shadow:var(--shadow);
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .premium-card .name{ font-size:14.5px; font-weight:700; }
+  .premium-card .price{ font-size:15px; font-weight:700; color:var(--accent); }
+
+  /* ---------- booking cta ---------- */
+  .book-cta{
+    text-align:center;
+    background: linear-gradient(180deg, var(--accent-soft), var(--surface));
+    border:1px solid var(--border); border-radius:var(--radius);
+    padding:40px 26px; margin: 30px 0 8px;
+  }
+  .book-cta h2{ font-size:23px; margin:0 0 8px; font-weight:800; }
+  .book-cta p{ color:var(--text-soft); font-size:14.5px; margin:0 0 24px; }
+  .book-link{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--accent); color:#fff; font-weight:700; font-size:16px;
+    padding:15px 34px; border-radius:999px; box-shadow:var(--shadow-lg);
+    transition: transform .15s ease, opacity .15s ease;
+  }
+  .book-link:hover{ opacity:.92; }
+  .book-link:active{ transform:scale(.98); }
+  .book-note{ margin-top:16px; font-size:12.5px; color:var(--text-faint); word-break:break-all; }
+
+  footer{ padding:26px 0 50px; color:var(--text-faint); font-size:12.5px; text-align:center; border-top:1px solid var(--border); margin-top:20px; line-height:1.6; }
+
+  @media (max-width:560px){
+    .flight-photo-strip{ grid-template-columns:1fr; }
+    .segment-info, .layover-row{ margin-left:0; }
+    .leg-row{ grid-template-columns:56px 1fr; }
+    .hero{ border-radius:0 0 20px 20px; padding:48px 0 30px; }
+  }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Сменить тему">◐</button>
+
+<section class="hero reveal">
+  <div class="hero-photo"></div>
+  <div class="hero-scrim"></div>
+  <div class="wrap hero-inner">
+    <div class="airline-row">
+      <span class="logo-pill"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Airfrance_Logo.svg" alt="Air France"></span>
+      <span class="plus">+</span>
+      <span class="logo-pill"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f6/AirBaltic_logo.svg" alt="airBaltic"></span>
+    </div>
+    <h1>Белград → Рио-де-Жанейро</h1>
+    <div class="route-badge"><span>BEG</span><span class="plane">✈</span><span>GIG</span></div>
+    <p class="sub">Воскресенье, 1 ноября 2026 · 2 пассажира, эконом · рейс с одной пересадкой в Париже</p>
+    <ul class="crit">
+      <li>16 ч 00 мин в пути</li>
+      <li>1 пересадка · Париж (CDG)</li>
+      <li>от 152 442 ₽ за 2 пассажиров</li>
+    </ul>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <p class="section-title reveal">Цены по датам вылета (за 2 пассажиров, эконом)</p>
+  <div class="date-strip reveal">
+    <div class="date-card"><div class="d">29 окт, чт</div><div class="p">146 650 ₽</div></div>
+    <div class="date-card"><div class="d">30 окт, пт</div><div class="p">133 320 ₽</div></div>
+    <div class="date-card"><div class="d">31 окт, сб</div><div class="p">133 320 ₽</div></div>
+    <div class="date-card selected"><div class="d">1 нояб, вс</div><div class="p">152 442 ₽</div></div>
+    <div class="date-card"><div class="d">2 нояб, пн</div><div class="p">121 570 ₽</div></div>
+    <div class="date-card"><div class="d">3 нояб, вт</div><div class="p">119 602 ₽</div></div>
+    <div class="date-card"><div class="d">4 нояб, ср</div><div class="p">144 660 ₽</div></div>
+  </div>
+
+  <p class="section-title reveal">Маршрут и расписание · 1 ноября</p>
+  <div class="flight-card reveal">
+
+    <div class="flight-photo-strip">
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Air_Baltic%2C_YL-CSL%2C_Airbus_A220-300_%2845076481464%29.jpg" alt="Airbus A220-300 airBaltic" loading="lazy" referrerpolicy="no-referrer">
+        <figcaption>Сегмент 1 · Airbus A220-300 · AF6291 (airBaltic)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Air_France%2C_F-HTYG%2C_Airbus_A350-941_%2851272694334%29.jpg" alt="Airbus A350-900 Air France" loading="lazy" referrerpolicy="no-referrer">
+        <figcaption>Сегмент 2 · Airbus A350-900 · AF0484 (Air France)</figcaption>
+      </figure>
+    </div>
+
+    <div class="timeline">
+      <div class="leg-row">
+        <div class="rail"><div class="dot"></div><div class="stem"></div></div>
+        <div class="content">
+          <div class="time">06:30</div>
+          <div class="place">Белград (BEG), Nikola Tesla Airport</div>
+          <div class="meta">1 нояб, вс</div>
+        </div>
+      </div>
+      <div class="segment-info">
+        <span class="pill">✈ AF6291 · Airbus A220-300 · выполняет airBaltic</span>
+        <span class="pill">⏱ в пути 2 ч 40 мин</span>
+      </div>
+
+      <div class="leg-row">
+        <div class="rail"><div class="dot"></div><div class="stem"></div></div>
+        <div class="content">
+          <div class="time">09:10</div>
+          <div class="place">Париж (CDG), Paris-Charles de Gaulle airport</div>
+          <div class="meta">Прибытие рейса AF6291 · 1 нояб, вс</div>
+        </div>
+      </div>
+      <div class="layover-row">⏱ Пересадка в аэропорту Парижа — 1 ч 45 мин</div>
+
+      <div class="leg-row">
+        <div class="rail"><div class="dot"></div><div class="stem"></div></div>
+        <div class="content">
+          <div class="time">10:55</div>
+          <div class="place">Париж (CDG), Paris-Charles de Gaulle airport</div>
+          <div class="meta">Вылет рейса AF0484 · 1 нояб, вс</div>
+        </div>
+      </div>
+      <div class="segment-info">
+        <span class="pill">✈ AF0484 · Airbus A350-900 · выполняет Air France</span>
+        <span class="pill">⏱ в пути 11 ч 35 мин</span>
+      </div>
+
+      <div class="leg-row">
+        <div class="rail"><div class="dot end"></div></div>
+        <div class="content">
+          <div class="time">18:30</div>
+          <div class="place">Рио-де-Жанейро (GIG), Rio Internacional</div>
+          <div class="meta">1 нояб, вс (местное время Рио)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-summary">
+      <div class="item"><div class="k">В пути всего</div><div class="v">16 ч 00 мин</div></div>
+      <div class="item"><div class="k">Пересадки</div><div class="v">1 · Париж</div></div>
+      <div class="item"><div class="k">Пассажиры</div><div class="v">2 взрослых</div></div>
+      <div class="item"><div class="k">Время</div><div class="v">местное на каждом участке</div></div>
+    </div>
+  </div>
+
+  <div class="pax-note reveal">✈️ <span><b>Стыковочный рейс из 15 доступных вариантов</b> на выбранную дату — показан самый быстрый (16 ч в пути). Все цены ниже указаны сразу за обоих пассажиров.</span></div>
+
+  <p class="section-title reveal">Тарифы эконом-класса (за 2 пассажиров)</p>
+  <div class="fares reveal">
+
+    <div class="fare-card">
+      <div class="fare-name">Light</div>
+      <div class="fare-cabin">Economy</div>
+      <div class="fare-price">153 432 ₽</div>
+      <div class="fare-per">за 2 пассажиров · <b>76 716 ₽</b> с человека</div>
+      <a class="fare-cta" href="https://russia.airfrance.com/search/flights/0" target="_blank" rel="noopener">Выбрать на сайте Air France</a>
+      <ul class="fare-list">
+        <li><span class="icon ok">✓</span> 1 небольшая сумка (40×30×15 см)</li>
+        <li><span class="icon ok">✓</span> 1 место ручной клади (55×35×25 см)</li>
+        <li class="no"><span class="icon no">✕</span> Без регистрируемого багажа</li>
+        <li><span class="icon ok">✓</span> Изменение возможно <span class="fine">сбор EUR 300 + разница в тарифе</span></li>
+        <li class="no"><span class="icon no">✕</span> Не подлежит возврату</li>
+      </ul>
+    </div>
+
+    <div class="fare-card highlight">
+      <div class="badge">Выбрано на сайте</div>
+      <div class="fare-name">Standard</div>
+      <div class="fare-cabin">Economy</div>
+      <div class="fare-price">170 752 ₽</div>
+      <div class="fare-per">за 2 пассажиров · <b>85 376 ₽</b> с человека</div>
+      <a class="fare-cta" href="https://russia.airfrance.com/search/flights/0" target="_blank" rel="noopener">Выбрать на сайте Air France</a>
+      <ul class="fare-list">
+        <li><span class="icon ok">✓</span> 1 небольшая сумка (40×30×15 см)</li>
+        <li><span class="icon ok">✓</span> 1 место ручной клади (55×35×25 см)</li>
+        <li><span class="icon ok">✓</span> 1 место регистрируемого багажа <span class="fine">23 кг</span></li>
+        <li><span class="icon ok">✓</span> Бесплатный выбор стандартного места при регистрации</li>
+        <li><span class="icon ok">✓</span> Изменение возможно <span class="fine">сбор EUR 150 + разница в тарифе</span></li>
+        <li class="no"><span class="icon no">✕</span> Не подлежит возврату</li>
+      </ul>
+    </div>
+
+    <div class="fare-card">
+      <div class="fare-name">Flex</div>
+      <div class="fare-cabin">Economy · Рекомендуем</div>
+      <div class="fare-price">191 442 ₽</div>
+      <div class="fare-per">за 2 пассажиров · <b>95 721 ₽</b> с человека</div>
+      <a class="fare-cta" href="https://russia.airfrance.com/search/flights/0" target="_blank" rel="noopener">Выбрать на сайте Air France</a>
+      <ul class="fare-list">
+        <li><span class="icon ok">✓</span> 1 небольшая сумка (40×30×15 см)</li>
+        <li><span class="icon ok">✓</span> 1 место ручной клади (55×35×25 см)</li>
+        <li><span class="icon ok">✓</span> 1 место регистрируемого багажа <span class="fine">23 кг</span></li>
+        <li><span class="icon ok">✓</span> Бесплатный выбор стандартного места</li>
+        <li><span class="icon ok">✓</span> Изменение — оплачивается только разница в тарифе</li>
+        <li><span class="icon ok">✓</span> Билет подлежит возврату при отмене до вылета первого рейса</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <p class="section-title reveal">Другие классы обслуживания</p>
+  <div class="premium-row reveal">
+    <div class="premium-card"><span class="name">Premium Economy</span><span class="price">460 696 ₽</span></div>
+    <div class="premium-card"><span class="name">Business</span><span class="price">1 071 822 ₽</span></div>
+  </div>
+
+  <div class="book-cta reveal">
+    <h2>Готовы бронировать?</h2>
+    <p>Переход ведёт на официальный сайт Air France, где можно оформить билет на выбранный рейс с указанными параметрами пассажиров.</p>
+    <a class="book-link" href="https://russia.airfrance.com/search/flights/0" target="_blank" rel="noopener">Открыть бронирование на russia.airfrance.com →</a>
+    <div class="book-note">Официальный сайт: russia.airfrance.com · рейс Белград (BEG) — Рио-де-Жанейро (GIG), 1 ноября 2026, 2 пассажира</div>
+  </div>
+
+  <footer>
+    Все цены, время рейсов и условия тарифов указаны по состоянию на 11 сентября 2026 и взяты со страницы бронирования russia.airfrance.com.<br>
+    Фото самолётов airBaltic и Air France, логотипы авиакомпаний — Wikimedia Commons.<br>
+    Цены и наличие мест могут измениться — актуальную стоимость и условия проверяйте на официальном сайте перед покупкой.
+  </footer>
+
+</div>
+
+<script>
+/* failsafe: контент всегда виден, даже если анимации не сработали */
+setTimeout(()=>{
+  document.querySelectorAll(".reveal, .fares .fare-card").forEach(el=>{
+    const cs = getComputedStyle(el);
+    if(parseFloat(cs.opacity) < 0.99){ el.style.opacity = "1"; el.style.transform = "none"; }
+  });
+}, 1500);
+
+/* theme toggle */
+(function(){
+  const btn = document.getElementById("themeToggle");
+  const root = document.documentElement;
+  let saved = null;
+  try{ saved = localStorage.getItem("theme"); }catch(e){}
+  if(saved) root.setAttribute("data-theme", saved);
+  btn.addEventListener("click", ()=>{
+    const cur = root.getAttribute("data-theme");
+    const isDark = cur ? cur==="dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const nextT = isDark ? "light" : "dark";
+    root.setAttribute("data-theme", nextT);
+    try{ localStorage.setItem("theme", nextT); }catch(e){}
+  });
+})();
+</script>
+
+<script type="module">
+/* scroll reveal (Framer Motion / motion) — прогрессивное улучшение поверх видимого контента */
+try{
+  const { animate, inView, stagger } = await import("https://cdn.jsdelivr.net/npm/motion@11/+esm");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!reduce){
+    inView(".reveal", (el)=>{
+      animate(el, { opacity:[0,1], y:[18,0] }, { duration:0.5, easing:[.22,1,.36,1] });
+    }, { margin:"0px 0px -8% 0px" });
+
+    const cards = document.querySelectorAll(".fares .fare-card");
+    if(cards.length){
+      inView(".fares", ()=>{
+        animate(cards, { opacity:[0,1], y:[22,0] }, { delay: stagger(0.08), duration:0.5, easing:[.22,1,.36,1] });
+      }, { margin:"0px 0px -10% 0px" });
+    }
+  }
+}catch(e){ /* motion не загрузился — контент уже виден, ничего не делаем */ }
+</script>
+
+</body>
+</html>
