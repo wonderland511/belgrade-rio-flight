@@ -153,18 +153,36 @@
 
   .timeline{
     display:grid;
-    grid-template-columns:auto 1fr auto;
+    grid-template-columns:auto 1fr auto 1fr auto;
     align-items:center;
-    gap:18px;
+    gap:14px;
   }
-  .tl-point{ text-align:center; min-width:64px; }
-  .tl-time{ font-family:'IBM Plex Mono', monospace; font-size:24px; font-weight:500; letter-spacing:-.01em; }
+  @media (max-width:640px){
+    .timeline{ grid-template-columns:1fr; gap:10px; }
+    .tl-seg{ padding:4px 0 4px 30px; }
+    .tl-line{ width:2px; height:26px; }
+    .tl-line::before{ left:50%; top:-3px; transform:translate(-50%,0); }
+    .tl-line::after{ left:50%; top:auto; bottom:-3px; transform:translate(-50%,0); }
+    .tl-plane{ top:50%; left:50%; transform:translate(-50%,-50%) rotate(90deg); }
+    .tl-point{ text-align:left; min-width:0; }
+  }
+  .tl-point{ text-align:center; min-width:76px; }
+  .tl-time{ font-family:'IBM Plex Mono', monospace; font-size:22px; font-weight:500; letter-spacing:-.01em; white-space:nowrap; }
   .tl-code{ font-size:13px; font-weight:600; margin-top:2px; }
   .tl-city{ font-size:12px; color:var(--ink-soft); }
   .tl-date{ font-size:11px; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; margin-bottom:4px; }
 
-  .tl-mid{ text-align:center; padding:0 4px; }
-  .tl-dur{ font-size:12px; color:var(--ink-soft); margin-bottom:6px; font-family:'IBM Plex Mono', monospace; }
+  .tl-point.hub .tl-time{ font-size:17px; color:var(--ink-soft); }
+  .tl-point.hub .tl-time b{ color:var(--ink); font-weight:600; }
+  .tl-layover{
+    margin-top:6px; display:inline-block;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:500;
+    color:var(--accent); background:var(--accent-soft);
+    border-radius:20px; padding:3px 9px; white-space:nowrap;
+  }
+
+  .tl-seg{ text-align:center; padding:0 4px; }
+  .tl-dur{ font-size:11.5px; color:var(--ink-soft); margin-bottom:6px; font-family:'IBM Plex Mono', monospace; white-space:nowrap; }
   .tl-line{ position:relative; height:2px; background:var(--line); border-radius:2px; }
   .tl-line::before, .tl-line::after{
     content:''; position:absolute; top:50%; width:6px; height:6px; border-radius:50%;
@@ -176,7 +194,6 @@
     position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
     background:var(--paper-raised); color:var(--gold); font-size:14px; padding:0 6px;
   }
-  .tl-stop{ font-size:11px; color:var(--ink-soft); margin-top:6px; }
 
   .legs{
     margin-top:16px; padding-top:14px; border-top:1px dashed var(--line);
@@ -331,10 +348,20 @@
             <div class="tl-code">BEG</div>
             <div class="tl-city">Белград</div>
           </div>
-          <div class="tl-mid">
-            <div class="tl-dur">30 ч 40 мин</div>
+          <div class="tl-seg">
+            <div class="tl-dur">5 ч 20 мин</div>
             <div class="tl-line"><span class="tl-plane">✈</span></div>
-            <div class="tl-stop">пересадка в Дубае</div>
+          </div>
+          <div class="tl-point hub">
+            <div class="tl-date">1 → 2 ноя</div>
+            <div class="tl-time">21:35 → <b>08:05</b></div>
+            <div class="tl-code">DXB</div>
+            <div class="tl-city">Дубай</div>
+            <div class="tl-layover">пересадка 10 ч 30 мин</div>
+          </div>
+          <div class="tl-seg">
+            <div class="tl-dur">14 ч 50 мин</div>
+            <div class="tl-line"><span class="tl-plane">✈</span></div>
           </div>
           <div class="tl-point">
             <div class="tl-date">пн, 2 ноя</div>
@@ -344,8 +371,9 @@
           </div>
         </div>
         <div class="legs">
-          <div>Плечо 1 — <b>Emirates EK2221</b> · выполняет flydubai, Boeing 737 MAX 8</div>
-          <div>Плечо 2 — <b>Emirates EK247</b> · Boeing 777</div>
+          <div>Плечо 1 — <b>Emirates EK2221</b> · выполняет flydubai, Boeing 737 MAX 8 · 5 ч 20 мин</div>
+          <div>Пересадка в Дубае — <b>10 ч 30 мин</b></div>
+          <div>Плечо 2 — <b>Emirates EK247</b> · Boeing 777 · 14 ч 50 мин</div>
         </div>
       </div>
 
@@ -361,10 +389,20 @@
             <div class="tl-code">BEG</div>
             <div class="tl-city">Белград</div>
           </div>
-          <div class="tl-mid">
-            <div class="tl-dur">21 ч 35 мин</div>
+          <div class="tl-seg">
+            <div class="tl-dur">5 ч 15 мин</div>
             <div class="tl-line"><span class="tl-plane">✈</span></div>
-            <div class="tl-stop">пересадка в Дубае</div>
+          </div>
+          <div class="tl-point hub">
+            <div class="tl-date">2 ноя</div>
+            <div class="tl-time">06:35 → <b>08:05</b></div>
+            <div class="tl-code">DXB</div>
+            <div class="tl-city">Дубай</div>
+            <div class="tl-layover">пересадка 1 ч 30 мин</div>
+          </div>
+          <div class="tl-seg">
+            <div class="tl-dur">14 ч 50 мин</div>
+            <div class="tl-line"><span class="tl-plane">✈</span></div>
           </div>
           <div class="tl-point">
             <div class="tl-date">пн, 2 ноя</div>
@@ -374,8 +412,9 @@
           </div>
         </div>
         <div class="legs">
-          <div>Плечо 1 — <b>Emirates EK2295</b> · выполняет flydubai, Boeing 737 MAX 8</div>
-          <div>Плечо 2 — <b>Emirates EK247</b> · Boeing 777</div>
+          <div>Плечо 1 — <b>Emirates EK2295</b> · выполняет flydubai, Boeing 737 MAX 8 · 5 ч 15 мин</div>
+          <div>Пересадка в Дубае — <b>1 ч 30 мин</b></div>
+          <div>Плечо 2 — <b>Emirates EK247</b> · Boeing 777 · 14 ч 50 мин</div>
         </div>
       </div>
 
