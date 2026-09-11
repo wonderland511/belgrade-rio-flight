@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Белград — Рио-де-Жанейро</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
@@ -291,11 +296,9 @@
   a.link{ color:var(--accent); text-decoration-color:color-mix(in srgb, var(--accent) 40%, transparent); }
 
   [data-animate]{ opacity:1; transform:none; }
-  @media (prefers-reduced-motion: no-preference){
-    [data-animate]{ opacity:0; transform:translateY(18px); }
-  }
 </style>
-
+</head>
+<body>
 <div class="wrap">
 
   <header class="top">
@@ -460,11 +463,18 @@
 </div>
 
 <script type="module">
-  import { animate, inView, spring } from "https://cdn.jsdelivr.net/npm/motion@11/+esm";
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduce) {
-    inView('[data-animate]', (el) => {
-      animate(el, { opacity: [0, 1], y: [18, 0] }, { duration: 0.6, easing: spring({ stiffness: 120, damping: 18 }) });
-    }, { margin: '0px 0px -10% 0px' });
+  try {
+    const { animate, inView, spring } = await import("https://cdn.jsdelivr.net/npm/motion@11/+esm");
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce) {
+      inView('[data-animate]', (el) => {
+        animate(el, { opacity: [0, 1], y: [18, 0] }, { duration: 0.6, easing: spring({ stiffness: 120, damping: 18 }) });
+      }, { margin: '0px 0px -10% 0px' });
+    }
+  } catch (e) {
+    /* motion CDN unavailable — content is already visible by default, nothing to fix */
   }
 </script>
+
+</body>
+</html>
