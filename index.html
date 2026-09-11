@@ -229,6 +229,8 @@
   .fare-name{ font-family:'Fraunces', serif; font-size:20px; font-weight:500; }
   .fare-price{ font-family:'IBM Plex Mono', monospace; font-size:22px; margin-top:6px; font-variant-numeric:tabular-nums; }
   .fare-note{ font-size:11.5px; opacity:.75; margin-top:2px; text-transform:uppercase; letter-spacing:.06em; }
+  .fare-total{ font-family:'IBM Plex Mono', monospace; font-size:13px; opacity:.85; margin-top:8px; padding-top:8px; border-top:1px solid rgba(255,255,255,.25); }
+  .fare-total b{ font-size:15px; }
 
   .fare-rows{ padding:6px 22px 18px; flex:1; }
   .frow{
@@ -282,6 +284,7 @@
   .cclass{ background:var(--paper-raised); padding:18px 16px; }
   .cclass .cname{ font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); }
   .cclass .cprice{ font-family:'IBM Plex Mono', monospace; font-size:17px; margin-top:6px; }
+  .cclass .cprice-usd{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); margin-top:2px; }
   .cclass.dim .cprice{ color:var(--ink-soft); }
   .cclass.hi .cprice{ color:var(--accent); font-weight:600; }
 
@@ -339,7 +342,7 @@
       <div class="flight">
         <div class="flight-head">
           <span class="flight-tag">Вариант 1 · дневной вылет</span>
-          <span class="flight-price">от <b>€ 2 688,48</b> / пасс.</span>
+          <span class="flight-price">от <b>€ 2 688,48</b> / пасс. · <b>€ 5 376,96</b> за 2 пасс. <span style="opacity:.7">(≈ $6 240)</span></span>
         </div>
         <div class="timeline">
           <div class="tl-point">
@@ -380,7 +383,7 @@
       <div class="flight">
         <div class="flight-head">
           <span class="flight-tag">Вариант 2 · ночной вылет</span>
-          <span class="flight-price">от <b>€ 2 688,48</b> / пасс.</span>
+          <span class="flight-price">от <b>€ 2 688,48</b> / пасс. · <b>€ 5 376,96</b> за 2 пасс. <span style="opacity:.7">(≈ $6 240)</span></span>
         </div>
         <div class="timeline">
           <div class="tl-point">
@@ -422,15 +425,16 @@
   </section>
 
   <section data-animate>
-    <h2>Тарифы эконом-класса (на человека)</h2>
-    <p class="lede">Указано в карточках Emirates.com как цена «за пассажира» — при этом сайт также показывает итог за двоих в <b>€ 2 688,48</b> (см. ниже, это стоимость по тарифу Flex как в поиске). Сверяйте итоговую сумму на этапе оплаты.</p>
+    <h2>Тарифы эконом-класса</h2>
+    <p class="lede">Цены Emirates.com указаны «за пассажира» — ниже приведена и итоговая сумма за двоих взрослых.</p>
 
     <div class="fares">
       <div class="fare best">
         <div class="fare-head">
           <div class="fare-name">Flex</div>
-          <div class="fare-price">€ 2 688,48</div>
+          <div class="fare-price">€ 2 688,48<span style="font-size:13px; opacity:.75; font-weight:400;"> / пасс.</span></div>
           <div class="fare-note">самая низкая цена</div>
+          <div class="fare-total">за 2 пасс. — <b>€ 5 376,96</b> ≈ <b>$ 6 239,96</b></div>
         </div>
         <div class="fare-rows">
           <div class="frow"><span class="k">Выбор места</span><span class="v free">бесплатно</span></div>
@@ -446,8 +450,9 @@
       <div class="fare">
         <div class="fare-head">
           <div class="fare-name">Flex Plus</div>
-          <div class="fare-price">€ 3 456,48</div>
+          <div class="fare-price">€ 3 456,48<span style="font-size:13px; opacity:.75; font-weight:400;"> / пасс.</span></div>
           <div class="fare-note">максимум гибкости</div>
+          <div class="fare-total">за 2 пасс. — <b>€ 6 912,96</b> ≈ <b>$ 8 022,49</b></div>
         </div>
         <div class="fare-rows">
           <div class="frow"><span class="k">Выбор места</span><span class="v free">бесплатно</span></div>
@@ -460,14 +465,18 @@
         </div>
       </div>
     </div>
+
+    <p class="fx-note">Курс на 11.09.2026: € 1 = $ 1,1605 (<a href="https://www.xe.com/en-us/currencyconverter/convert/?Amount=1&From=EUR&To=USD" target="_blank" rel="noopener noreferrer">xe.com</a>). Курс меняется ежедневно — сверяйте перед оплатой.</p>
   </section>
 
   <section data-animate>
     <h2>Цены по классам обслуживания</h2>
+    <p class="lede">За одного пассажира.</p>
     <div class="classgrid">
       <div class="cclass hi">
         <div class="cname">Эконом</div>
         <div class="cprice">от € 2 688,48</div>
+        <div class="cprice-usd">≈ $ 3 119,98</div>
       </div>
       <div class="cclass dim">
         <div class="cname">Премиум-эконом</div>
@@ -476,10 +485,12 @@
       <div class="cclass">
         <div class="cname">Бизнес</div>
         <div class="cprice">от € 11 764,48</div>
+        <div class="cprice-usd">≈ $ 13 652,68</div>
       </div>
       <div class="cclass">
         <div class="cname">Первый</div>
         <div class="cprice">от € 16 514,48</div>
+        <div class="cprice-usd">≈ $ 19 165,05</div>
       </div>
     </div>
   </section>
